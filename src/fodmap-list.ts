@@ -4,15 +4,19 @@ const FODMAP_LIST = [
     name: "Polenta",
     fodmap: "low",
     category: "Breads, Cereals, Grains and Pasta",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Polenta_Trentina.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/a/a2/Polenta_Trentina.jpg",
     details: { oligos: 0, fructose: 0, polyols: 0, lactose: 0 },
   },
   {
     id: "2",
-    name: "Fennel",
+    name: "Fennel, leaves",
     fodmap: "low",
     category: "Vegetables and legumes",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f5/Foeniculum_vulgare_leaf.JPG",
     details: { oligos: 0, fructose: 0, polyols: 0, lactose: 0 },
+    qty: "15g",
   },
   {
     id: "3",
@@ -3038,6 +3042,14 @@ const FODMAP_LIST = [
     fodmap: "low",
     category: "Cooking ingredients, Herbs and Spices",
     details: { oligos: 0, fructose: 0, polyols: 0, lactose: 0 },
+  },
+  {
+    id: "437",
+    name: "Fennel, bulb",
+    fodmap: "high",
+    category: "Vegetables and legumes",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/e/e6/Fennel_bulb.jpg",
   },
 ];
 

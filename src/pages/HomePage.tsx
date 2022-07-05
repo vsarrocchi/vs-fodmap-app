@@ -1,16 +1,21 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import StomachIcon from "../assets/diarrhea.png";
-import SearchIcon from "@mui/icons-material/Search";
-import { Autocomplete, InputAdornment } from "@mui/material";
-import FODMAP_LIST from "../fodmap-list";
+import { useState } from "react";
+import {
+  Autocomplete,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import SearchIcon from "@mui/icons-material/Search";
+import StomachIcon from "../assets/diarrhea.png";
+import FODMAP_LIST from "../fodmap-list";
+import FodmapCard from "../components/Fodmap/FodmapCard";
 
 const CSSTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -27,13 +32,19 @@ const CSSTextField = styled(TextField)({
 });
 
 const HomePage = () => {
+  const [selectedFood, setSelectedFood] = useState("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("search"),
-    });
+    const searchInputValue: any = data.get("search");
+    setSelectedFood(searchInputValue);
   };
+
+  const filtered =
+    selectedFood !== ""
+      ? FODMAP_LIST.filter((item) => item.name === selectedFood)
+      : [];
 
   return (
     <Container component="section" maxWidth="xs">
@@ -94,6 +105,9 @@ const HomePage = () => {
           </Button>
         </Box>
       </Box>
+      {filtered.map((item) => (
+        <FodmapCard key={item.id} {...item} />
+      ))}
     </Container>
   );
 };

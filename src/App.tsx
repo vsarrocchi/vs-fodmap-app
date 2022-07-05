@@ -9,14 +9,6 @@ import AllFodmap from "./pages/AllFodmap";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  // const [selectedOption, setSelectedOption] = useState("");
-
-  // const handleSelectedOption = (event: any) => {
-  //   setSelectedOption(event.target.value);
-  // };
-
-  // const filtered = selectedOption !== "" ? FODMAP_LIST.filter((item) => item.name === selectedOption) : FODMAP_LIST;
-
   return (
     <ThemeProvider theme={muiTheme}>
       <Layout>
