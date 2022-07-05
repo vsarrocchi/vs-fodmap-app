@@ -1,10 +1,10 @@
 interface FodmapItemModel {
   id: string;
   name: string;
-  description?: string;
-  image?: string;
   fodmap: string;
   category: string;
+  image?: string;
+  description?: string;
 }
 
 export default FodmapItemModel;
