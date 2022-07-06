@@ -31,7 +31,11 @@ const FodmapCard: React.FC<FodmapItemModel> = (item: FodmapItemModel) => {
               />
               {item.name}
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              sx={{ textTransform: "capitalize" }}
+            >
               {item.fodmap}
             </Typography>
             <Typography variant="subtitle1" paragraph>
