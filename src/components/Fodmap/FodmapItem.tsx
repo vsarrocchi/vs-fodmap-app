@@ -23,7 +23,11 @@ const FodmapItem: React.FC<FodmapItemModel> = ({ name, fodmap, image }) => {
               sx={{ width: 60, height: 60, marginRight: 2 }}
             />
           </ListItemAvatar>
-          <ListItemText primary={name} secondary={fodmap} />
+          <ListItemText
+            primary={name}
+            secondary={fodmap}
+            sx={{ textTransform: "capitalize" }}
+          />
           <ListItemIcon
             sx={{
               color:
