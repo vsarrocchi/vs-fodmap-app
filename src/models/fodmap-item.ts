@@ -11,7 +11,9 @@ interface FodmapItemModel {
     lactose: number;
   };
   description?: string;
-  qty?: string;
+  qty1?: string;
+  qty2?: string;
+  qty3?: string;
   key?: string;
 }
 
