@@ -7,6 +7,7 @@ import { muiTheme } from "./styles/stylesheet";
 import "./App.css";
 import AllFodmap from "./pages/AllFodmap";
 import NotFound from "./pages/NotFound";
+import FodmapDetail from "./pages/FodmapDetail";
 
 function App() {
   return (
@@ -15,23 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home-page" />} />
           <Route path="/home-page" element={<HomePage />} />
-          <Route
-            path="/all-fodmap"
-            element={<AllFodmap />}
-          />
-          {/* <Route path="/quotes/:quoteId" element={<QuoteDetail />}>
-            <Route
-              path=""
-              element={
-                <div className="centered">
-                  <Link className="btn--flat" to={`comments`}>
-                    Load Comments
-                  </Link>
-                </div>
-              }
-            />
-            <Route path={`comments`} element={<Comments />} />
-          </Route>*/}
+          <Route path="/all-fodmap" element={<AllFodmap />} />
+          <Route path="/all-fodmap/:fodmapId" element={<FodmapDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
