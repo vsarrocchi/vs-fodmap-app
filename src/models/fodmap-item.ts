@@ -3,18 +3,11 @@ interface FodmapItemModel {
   name: string;
   fodmap: string;
   category: string;
-  image?: string;
-  details?: {
-    oligos: number;
-    fructose: number;
-    polyols: number;
-    lactose: number;
-  };
-  description?: string;
-  qty1?: string;
-  qty2?: string;
-  qty3?: string;
-  key?: string;
+  image: string;
+  description: string;
+  qty1: string;
+  qty2: string;
+  qty3: string;
 }
 
 export default FodmapItemModel;

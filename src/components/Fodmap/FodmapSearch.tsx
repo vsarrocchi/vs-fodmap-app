@@ -29,20 +29,18 @@ const CSSTextField = styled(TextField)({
   },
 });
 
-type FodmapSearchProps = {
-  onSelectedFood: (text: string) => void;
-};
-
-const FodmapSearch: React.FC<FodmapSearchProps> = (props) => {
-  const onHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+const FodmapSearch: React.FC<{ onSearchFood: (text: string) => void }> = (
+  props
+) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const searchInputValue = data.get("search") as string;
-    props.onSelectedFood(searchInputValue);
+    props.onSearchFood(searchInputValue);
   };
 
-  const onhandleClick = () => {
-    props.onSelectedFood("");
+  const clickHandler = () => {
+    props.onSearchFood("");
   };
 
   return (
@@ -62,11 +60,12 @@ const FodmapSearch: React.FC<FodmapSearchProps> = (props) => {
         FODMAP
       </Typography>
       <Typography variant="subtitle1" gutterBottom align="center">
-        <b>F</b>ermentable <b>O</b>ligosaccharides, <b>D</b>isaccharides, <b>M</b>onosaccharides <b>a</b>nd <b>P</b>olyols.
+        <b>F</b>ermentable <b>O</b>ligosaccharides, <b>D</b>isaccharides,{" "}
+        <b>M</b>onosaccharides <b>a</b>nd <b>P</b>olyols.
       </Typography>
       <Box
         component="form"
-        onSubmit={onHandleSubmit}
+        onSubmit={submitHandler}
         noValidate
         sx={{
           mt: 1,
@@ -83,7 +82,7 @@ const FodmapSearch: React.FC<FodmapSearchProps> = (props) => {
           options={FODMAP_LIST.map((option) => option.name)}
           renderInput={(params) => (
             <CSSTextField
-              onClick={onhandleClick}
+              onClick={clickHandler}
               {...params}
               margin="normal"
               fullWidth

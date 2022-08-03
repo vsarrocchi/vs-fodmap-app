@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CircleIcon from "@mui/icons-material/Circle";
 import FodmapItemModel from "../../models/fodmap-item";
 
-const FodmapCard: React.FC<FodmapItemModel> = (item: FodmapItemModel) => {
+const FodmapCard: React.FC<{item: FodmapItemModel}> = (props) => {
   return (
     <Grid item xs={12} md={6}>
       <CardActionArea component="a" href="#">
@@ -22,24 +22,24 @@ const FodmapCard: React.FC<FodmapItemModel> = (item: FodmapItemModel) => {
                 sx={{
                   marginRight: 1,
                   color:
-                    item.fodmap === "low"
+                  props.item.fodmap === "low"
                       ? "green"
-                      : item.fodmap === "high"
+                      : props.item.fodmap === "high"
                       ? "red"
                       : "orange",
                 }}
               />
-              {item.name}
+              {props.item.name}
             </Typography>
             <Typography
               variant="subtitle1"
               color="text.secondary"
               sx={{ textTransform: "capitalize" }}
             >
-              {item.fodmap}
+              {props.item.fodmap}
             </Typography>
             <Typography variant="subtitle1" paragraph>
-              {item.description}
+              {props.item.description}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...
@@ -48,8 +48,8 @@ const FodmapCard: React.FC<FodmapItemModel> = (item: FodmapItemModel) => {
           <CardMedia
             component="img"
             sx={{ width: 160, display: { xs: "none", sm: "block" } }}
-            image={item.image}
-            alt={item.name}
+            image={props.item.image}
+            alt={props.item.name}
           />
         </Card>
       </CardActionArea>

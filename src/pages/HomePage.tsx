@@ -5,16 +5,35 @@ import FodmapCard from "../components/Fodmap/FodmapCard";
 import FodmapSearch from "../components/Fodmap/FodmapSearch";
 
 const HomePage = () => {
-  const [selectedFood, setSelectedFood] = useState("");
+  const [selectedFoodName, setSelectedFoodName] = useState<string>("");
 
-  const filtered =
-    selectedFood !== ""
-      ? FODMAP_LIST.filter((item) => item.name === selectedFood)
-      : [];
+  const filtered = FODMAP_LIST.filter((item) => item.name === selectedFoodName);
+
+  const searchFoodHandler = (food: string) => {
+    setSelectedFoodName(food);
+  };
+
+  let selectedFodmapContent;
+
+  if (selectedFoodName !== "" && filtered.length === 0) {
+    selectedFodmapContent = (
+      <Alert severity="info">
+        <AlertTitle>Alimento no encontrado</AlertTitle>
+        Puede que el alimento que busca no este aun agregado a la lista de
+        alimentos Fodmap —<strong> Search again!</strong>
+      </Alert>
+    );
+  }
+
+  if (selectedFoodName !== "" && filtered.length > 0) {
+    selectedFodmapContent = filtered.map((fodmapItem) => (
+      <FodmapCard key={fodmapItem.id} item={fodmapItem} />
+    ));
+  }
 
   return (
     <Container component="section">
-      <FodmapSearch onSelectedFood={setSelectedFood} />
+      <FodmapSearch onSearchFood={searchFoodHandler} />
       <Box
         sx={{
           marginTop: 8,
@@ -23,16 +42,7 @@ const HomePage = () => {
           marginRight: "auto",
         }}
       >
-        {selectedFood !== "" &&
-          filtered.length > 0 &&
-          filtered.map((item) => <FodmapCard key={item.id} {...item} />)}
-        {selectedFood !== "" && filtered.length === 0 && (
-          <Alert severity="info">
-            <AlertTitle>Alimento no encontrado</AlertTitle>
-            Puede que el alimento que busca no este aun agregado a la lista de
-            alimentos Fodmap —<strong> Search again!</strong>
-          </Alert>
-        )}
+        {selectedFodmapContent}
       </Box>
     </Container>
   );

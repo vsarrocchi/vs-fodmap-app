@@ -184,6 +184,7 @@ const FODMAP_LIST = [
     image: almondButterImage,
     category: "Condiments, Dips, Sweets, Sweeteners and Spreads",
     // details: { oligos: 0, fructose: 0, polyols: 0, lactose: 0 },
+    description: "",
     qty1: "",
     qty2: "32",
     qty3: "20",
